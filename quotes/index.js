@@ -3,8 +3,8 @@ const apiKey = 'Ve7lWsCziMuKJ1GTx8VsXQ==RcEfYgkXT5BPH1FY';
 
 const fetchQuote = () => {
     const quoteElement = document.getElementById('quote');
-    const authorElement = document.getElementById('author'); // Added author element
-    const category = 'happiness';
+    const authorElement = document.getElementById('author'); 
+    const category = 'movies';
 
     $.ajax({
         method: 'GET',
@@ -14,7 +14,7 @@ const fetchQuote = () => {
         success: function(result) {
             console.log(result);
             quoteElement.innerText = result[0].quote;
-            authorElement.innerHTML = `<i>${result[0].author}</i>`; // Set author in cursive
+            authorElement.innerHTML = `<i>${result[0].author}</i>`; 
         },
         error: function ajaxError(jqXHR) {
             console.error('Error: ', jqXHR.responseText);
@@ -24,11 +24,10 @@ const fetchQuote = () => {
 
 const markFavorite = () => {
     const quote = document.getElementById('quote').innerText;
-    // Store quote as favorite in local storage
+
     localStorage.setItem('favoriteQuote', quote);
 };
 
 const removeFavorite = () => {
-    // Remove favorite quote from local storage
     localStorage.removeItem('favoriteQuote');
 };
